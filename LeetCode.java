@@ -1,8 +1,5 @@
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -114,6 +111,20 @@ public class LeetCode {
         return removed;
     }
 
+    //    TODO:
+    //Write a function that takes an array/list of strings and returns the a different array/list with the strings sorted in reverse order.
+    //Example: f(["barry", "jetpack", "zombies", "brick"]) = ["zombies", "jetpack", "brick", "barry"]
+
+    public static void reverseList(ArrayList<String> input) {
+        Collections.reverse(input);
+        System.out.println(input);
+    }
+
+    //TODO:
+    //Write a class definition for a Person with a name, age, and phone number. Include a constructor and mutators methods for the fields.
+
+
+
     public static void main(String[] args) {
         System.out.println(replaceNumbersToString("I won 7 of the 10 games and received 30 dollars."));
         System.out.println(replaceRemove("Hey dude, I was just going to grab some fish n chips."));
@@ -123,15 +134,14 @@ public class LeetCode {
         evenNumbers(0, 10);
         System.out.println(factorial(6));
         System.out.println(reverseWords("I love Java Programming"));
+        ArrayList arrayList = new ArrayList();
+        arrayList.add("element_1");
+        arrayList.add("element_2");
+        arrayList.add("element_3");
+        arrayList.add("element_4");
+        arrayList.add("element_5");
+        reverseList(arrayList);
     }
-
-//    TODO:
-    //Write a function that takes an array/list of strings and returns the a different array/list with the strings sorted in reverse order.
-    //Example: f(["barry", "jetpack", "zombies", "brick"]) = ["zombies", "jetpack", "brick", "barry"]
-
-
-    //TODO:
-//    Write a class definition for a Person with a name, age, and phone number. Include a constructor and mutators methods for the fields.
 
 
 }
