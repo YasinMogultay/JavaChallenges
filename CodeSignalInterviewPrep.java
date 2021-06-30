@@ -44,14 +44,27 @@ public class CodeSignalInterviewPrep {
         return -1;
     }
 
-//    public static int doThings(String numberString) {
-//        try {
-//            int i = Integer.parseInt(numberString);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-//        return i;
-//    }
+    public static char firstNotRepeatingCharacter(String s){
+      for (int i = 0; i < s.length(); i++) {
+          boolean seenDuplicate = false;
+          for (int j = 0; j < s.length(); j++) {
+              if (s.charAt(i) == s.charAt(j) && (i != j)){
+                  seenDuplicate = true;
+                  break;
+              }
+          }
+          if (!seenDuplicate)
+              return s.charAt(i);
+      }
+      return '_';
+    }
+
+
+
+
+
+
+
 
 public static List<Integer> someFunction(final List<Integer> numbers) {
         List<Integer> result = new ArrayList<Integer>();
