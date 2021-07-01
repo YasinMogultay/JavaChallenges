@@ -1,11 +1,11 @@
-import java.sql.Array;
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class CoreJava {
 
     public static void main(String[] args) {
-//        System.out.println(addTwoDigits(29));
-//        System.out.println(largestNumber(2));
+        System.out.println(addTwoDigits(29));
+        System.out.println(largestNumber(2));
         int[] statues = {6, 2, 3, 8};
         System.out.println(makeArrayConsecutive(statues));
     }
@@ -103,5 +103,7 @@ public class CoreJava {
         }
         return true;
     }
+
+
 
 }
