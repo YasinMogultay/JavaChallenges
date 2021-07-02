@@ -124,23 +124,72 @@ public class LeetCode {
     //Write a class definition for a Person with a name, age, and phone number. Include a constructor and mutators methods for the fields.
 
 
+    public int[] twooSum(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; i++) {
+                int comp = nums[i] - target;
+
+                if (nums[j] == target) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+        throw new IllegalArgumentException("Not Match");
+    }
+
+    public static int reverse(int x) {
+     int y = 0;
+     while (x != 0) {
+         if (y > Integer.MAX_VALUE/10 || y < Integer.MIN_VALUE/10) return 0;
+         y *=10;
+         y += x %10;
+         x /= 10;
+     }
+     return y;
+    }
+
+    public static boolean isPalindrome(int x) {
+        int y = 0;
+        while (x != 0) {
+            if (y > Integer.MAX_VALUE/10 || y < Integer.MIN_VALUE/10) return false;
+            y *=10;
+            y += x %10;
+            x /= 10;
+        }
+        if(y == x)
+            return true;
+        return false;
+    }
+
+    public boolean isPalindromee(int x) {
+        if(x < 0 || (x % 10 == 0 && x != 0)){
+            return false;
+        }
+        int rNumber = 0;
+        while (x > rNumber) {
+            rNumber  = rNumber * 10 + x % 10;
+            x /= 10;
+        }
+        return x == rNumber || x == rNumber / 10;
+    }
 
     public static void main(String[] args) {
-        System.out.println(replaceNumbersToString("I won 7 of the 10 games and received 30 dollars."));
-        System.out.println(replaceRemove("Hey dude, I was just going to grab some fish n chips."));
-        System.out.println(firstCapitalize("this is a java. programming line is! starts here?"));
-        int a[] = {1, 20, 50, 6, 3, 2};
-        System.out.println(getSecondLargest(a));
-        evenNumbers(0, 10);
-        System.out.println(factorial(6));
-        System.out.println(reverseWords("I love Java Programming"));
-        ArrayList arrayList = new ArrayList();
-        arrayList.add("element_1");
-        arrayList.add("element_2");
-        arrayList.add("element_3");
-        arrayList.add("element_4");
-        arrayList.add("element_5");
-        reverseList(arrayList);
+        System.out.println(reverse(123));
+//        System.out.println(replaceNumbersToString("I won 7 of the 10 games and received 30 dollars."));
+//        System.out.println(replaceRemove("Hey dude, I was just going to grab some fish n chips."));
+//        System.out.println(firstCapitalize("this is a java. programming line is! starts here?"));
+//        int a[] = {1, 20, 50, 6, 3, 2};
+//        System.out.println(getSecondLargest(a));
+//        evenNumbers(0, 10);
+//        System.out.println(factorial(6));
+//        System.out.println(reverseWords("I love Java Programming"));
+//        ArrayList arrayList = new ArrayList();
+//        arrayList.add("element_1");
+//        arrayList.add("element_2");
+//        arrayList.add("element_3");
+//        arrayList.add("element_4");
+//        arrayList.add("element_5");
+//        reverseList(arrayList);
     }
 
 
