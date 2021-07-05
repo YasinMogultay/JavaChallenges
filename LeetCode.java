@@ -120,8 +120,6 @@ public class LeetCode {
         System.out.println(input);
     }
 
-    //TODO:
-    //Write a class definition for a Person with a name, age, and phone number. Include a constructor and mutators methods for the fields.
 
 
     public int[] twooSum(int[] nums, int target) {
