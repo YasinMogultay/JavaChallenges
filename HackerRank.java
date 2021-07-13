@@ -1,21 +1,19 @@
-import javax.swing.*;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class HackerRank {
-    public static void main(String[] args) {
-        try {
-            Float f1 = new Float("3.0");
-            int x = f1.intValue();
-            byte b = f1.byteValue();
-            double d = f1.doubleValue();
-            System.out.println(x + b + d);
-        } catch (NumberFormatException e) {
-            System.out.println("bad number");
-        }
-
-    }
+//    public static void main(String[] args) {
+//        try {
+//            Float f1 = new Float("3.0");
+//            int x = f1.intValue();
+//            byte b = f1.byteValue();
+//            double d = f1.doubleValue();
+//            System.out.println(x + b + d);
+//        } catch (NumberFormatException e) {
+//            System.out.println("bad number");
+//        }
+//
+//    }
 
     public static boolean stringComparator(int[] a, int[] b) {
         for (int i = 0; i < a.length; i++) {
@@ -120,6 +118,11 @@ public class HackerRank {
                 System.out.println(i);
             }
         }
+    }
+
+
+    public static void main(String[] args) {
+
     }
 
 
