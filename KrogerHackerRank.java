@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class CodingChallenge {
+public class KrogerHackerRank {
     public static void main(String[] args) {
 
     }
