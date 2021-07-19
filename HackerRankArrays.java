@@ -43,4 +43,13 @@ public class HackerRankArrays {
                 "Last Element: " + a.get(a.size()-1));
     }
 
+    public static long aVeryBigSum(List<Long> ar) {
+        // Write your code here
+        long total = 0;
+        for(int i = 0; i < ar.size(); i++){
+            total += ar.get(i);
+        }
+        return total;
+    }
+
 }

@@ -10,9 +10,9 @@ public class HackerRankStringManipulation {
 
         //count freq of each char in first and second string
         for (int i = 0; i < a.length(); i++)
-            count1[a.charAt(i)-'a']++;
+            count1[a.charAt(i) - 'a']++;
         for (int i =0; i < b.length(); i++){
-            count2[b.charAt(i)-'a']++;
+            count2[b.charAt(i) - 'a']++;
         }
 
         //traverse count arrays to find number of chars to be removed
