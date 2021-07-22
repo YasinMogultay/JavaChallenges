@@ -121,7 +121,6 @@ public class LeetCode {
     }
 
 
-
     public int[] twooSum(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; i++) {
@@ -136,43 +135,43 @@ public class LeetCode {
     }
 
     public static int reverse(int x) {
-     int y = 0;
-     while (x != 0) {
-         if (y > Integer.MAX_VALUE/10 || y < Integer.MIN_VALUE/10) return 0;
-         y *=10;
-         y += x %10;
-         x /= 10;
-     }
-     return y;
+        int y = 0;
+        while (x != 0) {
+            if (y > Integer.MAX_VALUE / 10 || y < Integer.MIN_VALUE / 10) return 0;
+            y *= 10;
+            y += x % 10;
+            x /= 10;
+        }
+        return y;
     }
 
     public static boolean isPalindrome(int x) {
         int y = 0;
         while (x != 0) {
-            if (y > Integer.MAX_VALUE/10 || y < Integer.MIN_VALUE/10) return false;
-            y *=10;
-            y += x %10;
+            if (y > Integer.MAX_VALUE / 10 || y < Integer.MIN_VALUE / 10) return false;
+            y *= 10;
+            y += x % 10;
             x /= 10;
         }
-        if(y == x)
+        if (y == x)
             return true;
         return false;
     }
 
     public boolean isPalindromee(int x) {
-        if(x < 0 || (x % 10 == 0 && x != 0)){
+        if (x < 0 || (x % 10 == 0 && x != 0)) {
             return false;
         }
         int rNumber = 0;
         while (x > rNumber) {
-            rNumber  = rNumber * 10 + x % 10;
+            rNumber = rNumber * 10 + x % 10;
             x /= 10;
         }
         return x == rNumber || x == rNumber / 10;
     }
 
-    public static void main(String[] args) {
-        System.out.println(reverse(123));
+//    public static void main(String[] args) {
+//        System.out.println(reverse(123));
 //        System.out.println(replaceNumbersToString("I won 7 of the 10 games and received 30 dollars."));
 //        System.out.println(replaceRemove("Hey dude, I was just going to grab some fish n chips."));
 //        System.out.println(firstCapitalize("this is a java. programming line is! starts here?"));
@@ -188,7 +187,7 @@ public class LeetCode {
 //        arrayList.add("element_4");
 //        arrayList.add("element_5");
 //        reverseList(arrayList);
-    }
+//    }
 
     public String longestCommonPrefix(String[] strs) {
         if (strs.length == 0) return "";
@@ -200,6 +199,7 @@ public class LeetCode {
             }
         return prefix;
     }
+
 
 
 }
