@@ -22,8 +22,8 @@ public class GoldmanSachsHackerRank {
         int small = 0;
         int big = unsorted.size() - 1;
 
-        for (int i = 0; i < unsorted.size(); i++){
-            if (flag){
+        for (int i = 0; i < unsorted.size(); i++) {
+            if (flag) {
                 finalArr.add(unsorted.get(big--));
             } else {
                 finalArr.add(unsorted.get(small++));
@@ -34,5 +34,15 @@ public class GoldmanSachsHackerRank {
         return finalArr;
     }
 
-
+    public static long maxPoints(List<Integer> elements) {
+        int max = 0;
+        for (int i : elements)
+            max = Math.max(max, i);
+        int[] s = new int[max + 1];
+        for (int i : elements)
+            s[i] += i;
+        for (int i = 2; i <= max; i++)
+            s[i] = Math.max(s[i] + s[i - 2], s[i - 1]);
+        return s[max];
+    }
 }
