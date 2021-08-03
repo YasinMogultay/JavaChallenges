@@ -36,8 +36,23 @@ public class HackerRankAlgorithms {
         return Collections.frequency( candles, max);
     }
 
-    public static void main(String[] args) {
-        List<Integer> array = Arrays.asList(3, 2, 1, 3);
-        System.out.println(birthdayCakeCandles(array));
+    /*
+     * Complete the 'timeConversion' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING s as parameter.
+     */
+    public static String timeConversion(String s) {
+        String hour = s.substring(0, 2);
+        String time = s.substring(2, 8);
+        String meridiem = s.substring(8, 10);
+
+        if (hour.equals("12"))
+            hour = "00";
+
+        if (meridiem.equals("AM"))
+            return hour + time;
+        else
+            return String.valueOf(Integer.valueOf(hour) + 12) + time;
     }
 }
