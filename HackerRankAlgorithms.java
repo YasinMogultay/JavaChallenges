@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class HackerRankAlgorithms {
 
@@ -14,13 +11,13 @@ public class HackerRankAlgorithms {
     public static void miniMaxSum(List<Integer> arr) {
         int min = arr.get(0);
         int max = arr.get(0);
-        long totalSum=0;
+        long totalSum = 0;
         for (int n : arr) {
             totalSum += n;
             if (n < min) min = n;
             if (n > max) max = n;
         }
-        System.out.println((totalSum-max) + " " + (totalSum-min));
+        System.out.println((totalSum - max) + " " + (totalSum - min));
     }
 
     /*
@@ -32,8 +29,8 @@ public class HackerRankAlgorithms {
 
     public static int birthdayCakeCandles(List<Integer> candles) {
         Collections.sort(candles);
-        int max = candles.get(candles.size()-1);
-        return Collections.frequency( candles, max);
+        int max = candles.get(candles.size() - 1);
+        return Collections.frequency(candles, max);
     }
 
     /*
@@ -55,4 +52,24 @@ public class HackerRankAlgorithms {
         else
             return String.valueOf(Integer.valueOf(hour) + 12) + time;
     }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int n = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        scanner.close();
+
+        if (n % 2 == 0 && n < 5 && n > 2) {
+            System.out.println("Not Weird");
+        } else if (n % 2 == 0 && n < 20 && n > 6) {
+            System.out.println("Weird");
+        } else if (n % 2 == 0 && n > 20) {
+            System.out.println("Not Weird");
+        } else {
+            System.out.println("Weird");
+        }
+    }
+
 }
