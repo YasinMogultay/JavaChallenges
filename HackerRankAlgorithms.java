@@ -130,12 +130,29 @@ public class HackerRankAlgorithms {
     public static List<Integer> reverseArray(List<Integer> a) {
         // Write your code here
         List<Integer> newArray = new ArrayList<Integer>(a.size());
-        for(int i = a.size()-1; i >= 0;  i--) {
+        for (int i = a.size() - 1; i >= 0; i--) {
             newArray.add(a.get(i));
         }
         return newArray;
     }
 
+
+    /*
+     * Complete the 'rotateLeft' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts following parameters:
+     *  1. INTEGER d
+     *  2. INTEGER_ARRAY arr
+     */
+
+    public static List<Integer> rotateLeft(int d, List<Integer> arr) {
+        List<Integer> toRotate = arr.subList(0, d), result = new ArrayList<Integer>();
+        for (int i = d; i < arr.size(); i++)
+            result.add(arr.get(i));
+            result.addAll(toRotate);
+        return result;
+    }
 
 
 }
