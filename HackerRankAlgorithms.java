@@ -150,8 +150,32 @@ public class HackerRankAlgorithms {
         List<Integer> toRotate = arr.subList(0, d), result = new ArrayList<Integer>();
         for (int i = d; i < arr.size(); i++)
             result.add(arr.get(i));
-            result.addAll(toRotate);
+        result.addAll(toRotate);
         return result;
+    }
+
+    /*
+     * Complete the 'matchingStrings' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts following parameters:
+     *  1. STRING_ARRAY strings
+     *  2. STRING_ARRAY queries
+     */
+
+    public static List<Integer> matchingStrings(List<String> strings, List<String> queries) {
+        // Write your code here
+        List<Integer> li = new ArrayList<Integer>();
+        for (int i = 0; i < queries.size(); i++) {
+            int count = 0;
+            for (int j = 0; j < strings.size(); j++) {
+                if (queries.get(i).equals(strings.get(j))) {
+                    count++;
+                }
+            }
+            li.add(count);
+        }
+        return li;
     }
 
 
