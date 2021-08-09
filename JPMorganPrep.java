@@ -27,7 +27,7 @@ public class JPMorganPrep {
     }
 
 
-    public static boolean isSelfDescribing(long a) {
+    public static boolean isSelfDN(long a) {
         String s = String.valueOf(a);
         for (int i = 0; i < s.length(); i++) {
             int b = s.charAt(i) - '0'; // number of times i-th digit must occur for it to be a self describing number
@@ -44,8 +44,33 @@ public class JPMorganPrep {
         return true;
     }
 
+    //another solution
+    public static boolean isSelfDN2(long num) {
+        //converting integer num to String to get indexes and compare them easily
+        String s = String.valueOf(num);
+        for (int i = 0; i < s.length(); i++) {
+            //Extracting each digit one by one from the string
+            String temp_char = s.charAt(i) + "";
+            //converting the string (digit) into integer b stores digit present at index 'i'
+            int b = Integer.parseInt(temp_char);
+            int count = 0; // counting how many times the number occur in whole number
+            for (int j = 0; j < s.length(); j++) {
+                //converting string char to integer
+                int temp = Integer.parseInt(s.charAt(j) + "");
+                //checking whether it's equal to index i if so then increment count
+                if (temp == i) {
+                    count++;
+                }
+            }
+            //if it's not equal return false.
+            if (count != b)
+                return false;
+        }
+        return true;
+    }
+
 
     public static void main(String[] args) {
-        System.out.println(isSelfDescribing(2020));
+        System.out.println(isSelfDN2(6210001000L));
     }
 }
