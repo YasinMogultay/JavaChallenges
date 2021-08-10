@@ -69,70 +69,23 @@ public class JPMorganPrep {
         return true;
     }
 
-    static String findD(String s)
-    {
-
-        // Strings of digits 0-9
-        String[] num
-                = { "zero", "one", "two",   "three", "four",
-                "five", "six", "seven", "eight", "nine" };
-
-        // Initialize vector
-        int[] arr = new int[10];
-
-        // Initialize answer
-        String ans = "";
-
-        // Size of the string
+    public int numDecodings(String s) {
         int n = s.length();
+        if (n == 0) return 0;
 
-        // Traverse the string
-        for (int i = 0; i < n; i++) {
-            if (s.charAt(i) == 'z')
-                arr[0]++;
-            if (s.charAt(i) == 'w')
-                arr[2]++;
-            if (s.charAt(i) == 'g')
-                arr[8]++;
-            if (s.charAt(i) == 'x')
-                arr[6]++;
-            if (s.charAt(i) == 'v')
-                arr[5]++;
-            if (s.charAt(i) == 'o')
-                arr[1]++;
-            if (s.charAt(i) == 's')
-                arr[7]++;
-            if (s.charAt(i) == 'f')
-                arr[4]++;
-            if (s.charAt(i) == 'h')
-                arr[3]++;
-            if (s.charAt(i) == 'i')
-                arr[9]++;
-        }
+        int[] memo = new int[n+1];
+        memo[n]  = 1;
+        memo[n-1] = s.charAt(n-1) != '0' ? 1 : 0;
 
-        // Update the elements of the vector
-        arr[7] -= arr[6];
-        arr[5] -= arr[7];
-        arr[4] -= arr[5];
-        arr[1] -= (arr[2] + arr[4] + arr[0]);
-        arr[3] -= arr[8];
-        arr[9] -= (arr[5] + arr[6] + arr[8]);
+        for (int i = n - 2; i >= 0; i--)
+            if (s.charAt(i) == '0') continue;
+            else memo[i] = (Integer.parseInt(s.substring(i,i+2))<=26) ? memo[i+1]+memo[i+2] : memo[i+1];
 
-        // Print the digits into their
-        // original format
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < arr[i]; j++) {
-                ans += (char)(i + '0');
-            }
-        }
-
-        // Return answer
-        return ans;
+        return memo[0];
     }
 
 
     public static void main(String[] args) {
         System.out.println(isSelfDN2(2020));
-        System.out.println(findD("oeisowufxrzohgiettr"));
     }
 }
