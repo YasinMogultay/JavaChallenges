@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
-public class JPMorganPrep {
+public class CodingPrep {
     public boolean isValid(String s) {
         if (s.length() % 2 != 0) return false;
 
