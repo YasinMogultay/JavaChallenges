@@ -236,5 +236,27 @@ public class LeetCode {
         }
         return j+1;
     }
+
+    //Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+    public int removeElement(int[] nums, int val) {
+        int count=0;
+        int end= nums.length-1;
+        if(nums.length==1 && nums[0]==val) return 0;
+        for(int i=0;i<(nums.length-count);i++){
+            if(nums[i]==val && i!=end){  //step 1
+                count++;
+                while(nums[end]==val && end>0 && i!=end) {  // step 2
+                    end--;
+                    count++;
+                }
+                int temp=nums[i];   // swapping
+                nums[i]= nums[end];
+                nums[end]= temp;
+                end--;
+            }
+        }
+        if(end>0 &&nums[end]==val) count++;
+        return nums.length-count;
+    }
 }
 
