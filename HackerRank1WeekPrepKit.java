@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HackerRank1WeekPrepKit {
@@ -30,4 +31,16 @@ public class HackerRank1WeekPrepKit {
             System.out.printf("%.6f \n", i);
     }
 
+    //Q2
+    public static void miniMaxSum(List<Integer> arr) {
+        // Write your code here
+        Collections.sort(arr);
+        long max = 0;
+        long min = 0;
+        for (int i = 0; i < 4; i++) {
+            min += arr.get(i);
+        }
+        max = min + arr.get(4) - arr.get(0);
+        System.out.println(min + " " + max);
+    }
 }
