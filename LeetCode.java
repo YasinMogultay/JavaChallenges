@@ -327,5 +327,22 @@ public class LeetCode {
         }
         return stb.reverse().toString();
     }
+
+//    You are climbing a staircase. It takes n steps to reach the top.
+//    Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+    int result;
+    HashMap<Integer, Integer> memo = new HashMap<Integer, Integer>();
+
+    public int climbStairs(int n) {
+        if(n < 2) {
+            return 1;
+        }
+        if(memo.containsKey(n)) {
+            return memo.get(n);
+        }
+        result = climbStairs(n-1) + climbStairs(n-2);
+        memo.put(n,result);
+        return result;
+    }
 }
 
