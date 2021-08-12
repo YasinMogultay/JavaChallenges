@@ -1,5 +1,7 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class HackerRank1WeekPrepKit {
@@ -42,5 +44,20 @@ public class HackerRank1WeekPrepKit {
         }
         max = min + arr.get(4) - arr.get(0);
         System.out.println(min + " " + max);
+    }
+
+    //Q3
+    public static String timeConversion(String s) {
+        // Write your code here
+        String t = "";
+        try {
+            SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
+            SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm:ssaa");
+            Date date = parseFormat.parse(s);
+            t = displayFormat.format(date);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return t;
     }
 }
