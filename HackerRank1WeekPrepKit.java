@@ -60,4 +60,21 @@ public class HackerRank1WeekPrepKit {
         }
         return t;
     }
+
+    //Day 2
+
+    //Given an array of integers, where all elements but one occur twice, find the unique element.
+    public static int lonelyinteger(List<Integer> a) {
+        // Write your code here
+        List<Integer> nums = new ArrayList<Integer>();
+        for (int i = 0; i < a.size(); i++) {
+            int temp = a.get(i);
+            if (nums.contains(temp)) { //if array contains temp number remove
+                nums.remove(nums.indexOf(temp));
+            } else {
+                nums.add(temp); //else add temp number to array
+            }
+        }
+        return nums.get(0);
+    }
 }
