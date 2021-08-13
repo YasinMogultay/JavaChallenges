@@ -77,4 +77,20 @@ public class HackerRank1WeekPrepKit {
         }
         return nums.get(0);
     }
+
+    //Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+    public static int diagonalDifference(List<List<Integer>> arr) {
+        // Write your code here
+        int left = 0;
+        int right = 0;
+        int k = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            left += arr.get(i).get(i);
+        }
+        for (int j = arr.size() - 1; j >= 0; j--) {
+            right += arr.get(j).get(k);
+            k++;
+        }
+        return Math.abs(left - right);
+    }
 }
