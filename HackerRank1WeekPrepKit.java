@@ -93,4 +93,18 @@ public class HackerRank1WeekPrepKit {
         }
         return Math.abs(left - right);
     }
+
+    //Given a list of integers, count and return the number of times each value appears as an array of integers.
+    public static List<Integer> countingSort(List<Integer> arr) {
+        int[] result = new int[100];
+        for (int i = 0; i < arr.size(); i++) {
+            int num = arr.get(i);
+            result[num]++;
+        }
+        arr.clear();
+        for (int i : result)
+            arr.add(i);
+        return arr;
+    }
+
 }
