@@ -13,3 +13,24 @@ function checkPrime(number) {
         return true;
     }
 }
+
+
+//iterate through the given an array of numbers if number is prime add it to array and return sorted array with prime numbers
+function isPrime(arr){
+    //an empty array to store prime numbers
+    let primeNumbers = [];
+    for (let i = 0; i < arr.length; i++) {
+        //if it's prime push to primeNumbers Array
+        if (checkPrime(arr[i])){
+            primeNumbers.push(arr[i])
+        }
+    }
+    //sorting array of prime numbers before returning
+    primeNumbers.sort(function(a, b){return a-b});
+    return primeNumbers;
+}
+
+//example
+var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+console.log(isPrime(arr));
+
