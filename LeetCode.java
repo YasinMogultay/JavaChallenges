@@ -548,11 +548,11 @@ public class LeetCode {
 
 //    Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
     public int[] searchRange(int[] A, int target) {
-        int start = Solution.firstGreaterEqual(A, target);
+        int start = LeetCode.firstGreaterEqual(A, target);
         if (start == A.length || A[start] != target) {
             return new int[]{-1, -1};
         }
-        return new int[]{start, Solution.firstGreaterEqual(A, target + 1) - 1};
+        return new int[]{start, LeetCode.firstGreaterEqual(A, target + 1) - 1};
     }
 
     //find the first number that is greater than or equal to target.
@@ -574,8 +574,17 @@ public class LeetCode {
         return low;
     }
 
-
-
+//    Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+    public int searchInsert(int[] A, int target) {
+        int low = 0, high = A.length-1;
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(A[mid] == target) return mid;
+            else if(A[mid] > target) high = mid-1;
+            else low = mid+1;
+        }
+        return low;
+    }
 
 
 }
