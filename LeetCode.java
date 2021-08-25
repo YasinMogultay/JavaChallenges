@@ -746,14 +746,23 @@ public class LeetCode {
     }
 
     //Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
-    public double pow(double x, int n) {
-        if(n == 0)
-            return 1;
-        if(n<0){
-            n = -n;
-            x = 1/x;
+    public double myPow(double x, int n) {
+        double res = 1.0;
+        while(n!=0){
+            if(Math.abs(n)%2 == 0){
+                x*=x;
+                n/=2;
+            }
+            if(n>0){
+                res *= x;
+                n--;
+            }
+            else{
+                res*=(1/x);
+                n++;
+            }
         }
-        return (n%2 == 0) ? pow(x*x, n/2) : x*pow(x*x, n/2);
+        return res;
     }
 }
 
