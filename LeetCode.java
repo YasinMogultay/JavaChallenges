@@ -814,5 +814,38 @@ public class LeetCode {
             nums1[finished--] = nums2[tail2--];
         }
     }
+
+
+//    The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
+//     countAndSay(1) = "1"
+//countAndSay(n) is the way you would "say" the digit string from countAndSay(n-1), which is then converted into a different digit string.
+    public String countAndSay(int n) {
+        String s = "1";
+        for(int i = 1; i < n; i++){
+            s = countIdx(s);
+        }
+        return s;
+    }
+
+    public String countIdx(String s){
+        StringBuilder sb = new StringBuilder();
+        char c = s.charAt(0);
+        int count = 1;
+        for(int i = 1; i < s.length(); i++){
+            if(s.charAt(i) == c){
+                count++;
+            }
+            else
+            {
+                sb.append(count);
+                sb.append(c);
+                c = s.charAt(i);
+                count = 1;
+            }
+        }
+        sb.append(count);
+        sb.append(c);
+        return sb.toString();
+    }
 }
 
