@@ -847,5 +847,18 @@ public class LeetCode {
         sb.append(c);
         return sb.toString();
     }
+
+//    Given a string path, which is an absolute path (starting with a slash '/') to a file or directory in a Unix-style file system, convert it to the simplified canonical path.
+public String simplifyPath(String path) {
+    Deque<String> stack = new LinkedList<>();
+    Set<String> skip = new HashSet<>(Arrays.asList("..",".",""));
+    for (String dir : path.split("/")) {
+        if (dir.equals("..") && !stack.isEmpty()) stack.pop();
+        else if (!skip.contains(dir)) stack.push(dir);
+    }
+    String res = "";
+    for (String dir : stack) res = "/" + dir + res;
+    return res.isEmpty() ? "/" : res;
+}
 }
 
