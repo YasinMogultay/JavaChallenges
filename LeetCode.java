@@ -860,5 +860,25 @@ public String simplifyPath(String path) {
     for (String dir : stack) res = "/" + dir + res;
     return res.isEmpty() ? "/" : res;
 }
+//    Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+    public int singleNumber(int[] nums) {
+        HashMap<Integer, Integer> hash = new<Integer, Integer> HashMap();
+
+        for(int x : nums){
+            if(hash.containsKey(x)){       //if hashmap contains 'element', then increase correspoding val
+                int count = hash.get(x);
+                hash.put(x, ++count);
+            }
+            else
+                hash.put(x, 1);           //if hashmap does not contain  'element', then put it in hashmap
+        }
+
+        for(int x : hash.keySet()){       //Iterate through 'keys' of HashMap
+            if(hash.get(x)==1)            //if 'value' for 'key' is '1', then return that 'key' element
+                return x;
+        }
+
+        return -1;
+    }
 }
 
