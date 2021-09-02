@@ -213,8 +213,8 @@ public class LeetCode {
         a['M' - 'A'] = 1000;
         char prev = 'A';
         int sum = 0;
-        for(char s : str.toCharArray()) {
-            if(a[s - 'A'] > a[prev - 'A']) {
+        for (char s : str.toCharArray()) {
+            if (a[s - 'A'] > a[prev - 'A']) {
                 sum = sum - 2 * a[prev - 'A'];
             }
             sum = sum + a[s - 'A'];
@@ -228,71 +228,75 @@ public class LeetCode {
 
         int i = 1; //iterator thru array
         int j = 0; //current index
-        for (; i<nums.length; i++) {
+        for (; i < nums.length; i++) {
             if (nums[i] != nums[j]) { //new number
                 j++; //move current index
                 nums[j] = nums[i]; //fill current index with new number
             }
         }
-        return j+1;
+        return j + 1;
     }
 
     //Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
     public int removeElement(int[] nums, int val) {
-        int count=0;
-        int end= nums.length-1;
-        if(nums.length==1 && nums[0]==val) return 0;
-        for(int i=0;i<(nums.length-count);i++){
-            if(nums[i]==val && i!=end){  //step 1
+        int count = 0;
+        int end = nums.length - 1;
+        if (nums.length == 1 && nums[0] == val) return 0;
+        for (int i = 0; i < (nums.length - count); i++) {
+            if (nums[i] == val && i != end) {  //step 1
                 count++;
-                while(nums[end]==val && end>0 && i!=end) {  // step 2
+                while (nums[end] == val && end > 0 && i != end) {  // step 2
                     end--;
                     count++;
                 }
-                int temp=nums[i];   // swapping
-                nums[i]= nums[end];
-                nums[end]= temp;
+                int temp = nums[i];   // swapping
+                nums[i] = nums[end];
+                nums[end] = temp;
                 end--;
             }
         }
-        if(end>0 &&nums[end]==val) count++;
-        return nums.length-count;
+        if (end > 0 && nums[end] == val) count++;
+        return nums.length - count;
     }
 
 
-//    Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+    //    Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
     public int maxSubArray(int[] nums) {
-        return Subarray(nums, 0 ,nums.length -1 );
+        return Subarray(nums, 0, nums.length - 1);
     }
-    public int Subarray(int[] A,int left, int right){
-        if(left == right){return A[left];}
+
+    public int Subarray(int[] A, int left, int right) {
+        if (left == right) {
+            return A[left];
+        }
         int mid = left + (right - left) / 2;
-        int leftSum = Subarray(A,left,mid);// left part
-        int rightSum = Subarray(A,mid+1,right);//right part
-        int crossSum = crossSubarray(A,left,right);// cross part
-        if(leftSum >= rightSum && leftSum >= crossSum){// left part is max
+        int leftSum = Subarray(A, left, mid);// left part
+        int rightSum = Subarray(A, mid + 1, right);//right part
+        int crossSum = crossSubarray(A, left, right);// cross part
+        if (leftSum >= rightSum && leftSum >= crossSum) {// left part is max
             return leftSum;
         }
-        if(rightSum >= leftSum && rightSum >= crossSum){// right part is max
+        if (rightSum >= leftSum && rightSum >= crossSum) {// right part is max
             return rightSum;
         }
         return crossSum; // cross part is max
     }
-    public int crossSubarray(int[] A,int left,int right){
+
+    public int crossSubarray(int[] A, int left, int right) {
         int leftSum = Integer.MIN_VALUE;
         int rightSum = Integer.MIN_VALUE;
         int sum = 0;
         int mid = left + (right - left) / 2;
-        for(int i = mid; i >= left ; i--){
+        for (int i = mid; i >= left; i--) {
             sum = sum + A[i];
-            if(leftSum < sum){
+            if (leftSum < sum) {
                 leftSum = sum;
             }
         }
         sum = 0;
-        for(int j = mid + 1; j <= right; j++){
+        for (int j = mid + 1; j <= right; j++) {
             sum = sum + A[j];
-            if(rightSum < sum){
+            if (rightSum < sum) {
                 rightSum = sum;
             }
         }
@@ -301,10 +305,10 @@ public class LeetCode {
 
     //    Given two binary strings a and b, return their sum as a binary string.
     public String addBinary(String a, String b) {
-        if(a == null || a.isEmpty()) {
+        if (a == null || a.isEmpty()) {
             return b;
         }
-        if(b == null || b.isEmpty()) {
+        if (b == null || b.isEmpty()) {
             return a;
         }
         char[] aArray = a.toCharArray();
@@ -318,7 +322,7 @@ public class LeetCode {
         int carry = 0;
         int result;
 
-        while(i > -1 || j > -1 || carry == 1) {
+        while (i > -1 || j > -1 || carry == 1) {
             aByte = (i > -1) ? Character.getNumericValue(aArray[i--]) : 0;
             bByte = (j > -1) ? Character.getNumericValue(bArray[j--]) : 0;
             result = aByte ^ bByte ^ carry;
@@ -328,20 +332,20 @@ public class LeetCode {
         return stb.reverse().toString();
     }
 
-//    You are climbing a staircase. It takes n steps to reach the top.
+    //    You are climbing a staircase. It takes n steps to reach the top.
 //    Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
     int result;
     HashMap<Integer, Integer> memo = new HashMap<Integer, Integer>();
 
     public int climbStairs(int n) {
-        if(n < 2) {
+        if (n < 2) {
             return 1;
         }
-        if(memo.containsKey(n)) {
+        if (memo.containsKey(n)) {
             return memo.get(n);
         }
-        result = climbStairs(n-1) + climbStairs(n-2);
-        memo.put(n,result);
+        result = climbStairs(n - 1) + climbStairs(n - 2);
+        memo.put(n, result);
         return result;
     }
 
@@ -376,7 +380,7 @@ public class LeetCode {
         int index2 = 0;
         int med1 = 0;
         int med2 = 0;
-        for (int i=0; i<=(nums1.length+nums2.length)/2; i++) {
+        for (int i = 0; i <= (nums1.length + nums2.length) / 2; i++) {
             med1 = med2;
             if (index1 == nums1.length) {
                 med2 = nums2[index2];
@@ -384,18 +388,18 @@ public class LeetCode {
             } else if (index2 == nums2.length) {
                 med2 = nums1[index1];
                 index1++;
-            } else if (nums1[index1] < nums2[index2] ) {
+            } else if (nums1[index1] < nums2[index2]) {
                 med2 = nums1[index1];
                 index1++;
-            }  else {
+            } else {
                 med2 = nums2[index2];
                 index2++;
             }
         }
 
         // the median is the average of two numbers
-        if ((nums1.length+nums2.length)%2 == 0) {
-            return (float)(med1+med2)/2;
+        if ((nums1.length + nums2.length) % 2 == 0) {
+            return (float) (med1 + med2) / 2;
         }
 
         return med2;
@@ -409,9 +413,9 @@ public class LeetCode {
         if (len < 2)
             return s;
 
-        for (int i = 0; i < len-1; i++) {
+        for (int i = 0; i < len - 1; i++) {
             extendPalindrome(s, i, i);  //assume odd length, try to extend Palindrome as possible
-            extendPalindrome(s, i, i+1); //assume even length.
+            extendPalindrome(s, i, i + 1); //assume even length.
         }
         return s.substring(lo, lo + maxLen);
     }
@@ -429,21 +433,21 @@ public class LeetCode {
 
     //11. Container With Most Water
     public int maxArea(int[] height) {
-        int i=0;
-        int j=height.length-1;
+        int i = 0;
+        int j = height.length - 1;
 
-        int ans=0;
-        while(i!=j){
+        int ans = 0;
+        while (i != j) {
 
-            int area=(j-i)*Math.min(height[i],height[j]);
+            int area = (j - i) * Math.min(height[i], height[j]);
 
-            if(area>ans){
-                ans=area;
+            if (area > ans) {
+                ans = area;
             }
 
-            if(height[i]>height[j]){
+            if (height[i] > height[j]) {
                 j--;
-            }else{
+            } else {
                 i++;
             }
         }
@@ -475,14 +479,14 @@ public class LeetCode {
 
     //17. Letter Combinations of a Phone Number
     public static List<String> letterCombinations(String digits) {
-        String digitletter[] = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        String digitletter[] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         List<String> result = new ArrayList<String>();
 
-        if (digits.length()==0) return result;
+        if (digits.length() == 0) return result;
 
         result.add("");
-        for (int i=0; i<digits.length(); i++)
-            result = combine(digitletter[digits.charAt(i)-'0'],result);
+        for (int i = 0; i < digits.length(); i++)
+            result = combine(digitletter[digits.charAt(i) - '0'], result);
 
         return result;
     }
@@ -490,9 +494,9 @@ public class LeetCode {
     public static List<String> combine(String digit, List<String> l) {
         List<String> result = new ArrayList<String>();
 
-        for (int i=0; i<digit.length(); i++)
+        for (int i = 0; i < digit.length(); i++)
             for (String x : l)
-                result.add(x+digit.charAt(i));
+                result.add(x + digit.charAt(i));
 
         return result;
     }
@@ -507,7 +511,7 @@ public class LeetCode {
         }
         int threshold = l1 - l2;
         for (int i = 0; i <= threshold; ++i) {
-            if (haystack.substring(i,i+l2).equals(needle)) {
+            if (haystack.substring(i, i + l2).equals(needle)) {
                 return i;
             }
         }
@@ -519,34 +523,34 @@ public class LeetCode {
         if (A == 1 << 31 && B == -1) return (1 << 31) - 1;
         int a = Math.abs(A), b = Math.abs(B), res = 0, x = 0;
         while (a - b >= 0) {
-            for (x = 0; a - (b << x << 1) >= 0; x++);
+            for (x = 0; a - (b << x << 1) >= 0; x++) ;
             res += 1 << x;
             a -= b << x;
         }
         return (A > 0) == (B > 0) ? res : -res;
     }
 
-//    Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+    //    Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
     public List<String> generateParenthesis(int n) {
         List<String> list = new ArrayList<String>();
         backtrack(list, "", 0, 0, n);
         return list;
     }
 
-    public void backtrack(List<String> list, String str, int open, int close, int max){
+    public void backtrack(List<String> list, String str, int open, int close, int max) {
 
-        if(str.length() == max*2){
+        if (str.length() == max * 2) {
             list.add(str);
             return;
         }
 
-        if(open < max)
-            backtrack(list, str+"(", open+1, close, max);
-        if(close < open)
-            backtrack(list, str+")", open, close+1, max);
+        if (open < max)
+            backtrack(list, str + "(", open + 1, close, max);
+        if (close < open)
+            backtrack(list, str + ")", open, close + 1, max);
     }
 
-//    Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+    //    Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
     public int[] searchRange(int[] A, int target) {
         int start = LeetCode.firstGreaterEqual(A, target);
         if (start == A.length || A[start] != target) {
@@ -574,42 +578,44 @@ public class LeetCode {
         return low;
     }
 
-//    Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+    //    Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
     public int searchInsert(int[] A, int target) {
-        int low = 0, high = A.length-1;
-        while(low<=high){
-            int mid = (low+high)/2;
-            if(A[mid] == target) return mid;
-            else if(A[mid] > target) high = mid-1;
-            else low = mid+1;
+        int low = 0, high = A.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (A[mid] == target) return mid;
+            else if (A[mid] > target) high = mid - 1;
+            else low = mid + 1;
         }
         return low;
     }
-//Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+    //Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
     public boolean isValidSudoku(char[][] board) {
-        for (int i=0; i<9; i++) {
-            if (!isParticallyValid(board,i,0,i,8)) return false;
-            if (!isParticallyValid(board,0,i,8,i)) return false;
+        for (int i = 0; i < 9; i++) {
+            if (!isParticallyValid(board, i, 0, i, 8)) return false;
+            if (!isParticallyValid(board, 0, i, 8, i)) return false;
         }
-        for (int i=0;i<3;i++){
-            for(int j=0;j<3;j++){
-                if (!isParticallyValid(board,i*3,j*3,i*3+2,j*3+2)) return false;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (!isParticallyValid(board, i * 3, j * 3, i * 3 + 2, j * 3 + 2)) return false;
             }
         }
         return true;
     }
-    private boolean isParticallyValid(char[][] board, int x1, int y1,int x2,int y2){
+
+    private boolean isParticallyValid(char[][] board, int x1, int y1, int x2, int y2) {
         Set singleSet = new HashSet();
-        for (int i= x1; i<=x2; i++){
-            for (int j=y1;j<=y2; j++){
-                if (board[i][j]!='.') if(!singleSet.add(board[i][j])) return false;
+        for (int i = x1; i <= x2; i++) {
+            for (int j = y1; j <= y2; j++) {
+                if (board[i][j] != '.') if (!singleSet.add(board[i][j])) return false;
             }
         }
         return true;
     }
 
 
-//    Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations
+    //    Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations
 //   of candidates where the chosen numbers sum to target. You may return the combinations in any order.
     public List<List<Integer>> combinationSum(int[] cands, int t) {
         Arrays.sort(cands); // sort candidates to try them in asc order
@@ -621,20 +627,21 @@ public class LeetCode {
                 // special case when curr target is equal to curr candidate
                 if (i == cands[j]) newList.add(Arrays.asList(cands[j]));
                     // if current candidate is less than the target use prev results
-                else for (List<Integer> l : dp.get(i-cands[j]-1)) {
+                else for (List<Integer> l : dp.get(i - cands[j] - 1)) {
                     if (cands[j] <= l.get(0)) {
                         List cl = new ArrayList<>();
-                        cl.add(cands[j]); cl.addAll(l);
+                        cl.add(cands[j]);
+                        cl.addAll(l);
                         newList.add(cl);
                     }
                 }
             }
             dp.add(newList);
         }
-        return dp.get(t-1);
+        return dp.get(t - 1);
     }
 
-//    Given an unsorted integer array nums, return the smallest missing positive integer.
+    //    Given an unsorted integer array nums, return the smallest missing positive integer.
 //    You must implement an algorithm that runs in O(n) time and uses constant extra space.
     public int firstMissingPositive(int[] nums) {
         int n = nums.length;
@@ -672,13 +679,13 @@ public class LeetCode {
     }
 
 
-//    Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+    //    Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
     public String multiply(String num1, String num2) {
         int m = num1.length(), n = num2.length();
         int[] pos = new int[m + n];
 
-        for(int i = m - 1; i >= 0; i--) {
-            for(int j = n - 1; j >= 0; j--) {
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
                 int mul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
                 int p1 = i + j, p2 = i + j + 1;
                 int sum = mul + pos[p2];
@@ -689,7 +696,7 @@ public class LeetCode {
         }
 
         StringBuilder sb = new StringBuilder();
-        for(int p : pos) if(!(sb.length() == 0 && p == 0)) sb.append(p);
+        for (int p : pos) if (!(sb.length() == 0 && p == 0)) sb.append(p);
         return sb.length() == 0 ? "0" : sb.toString();
     }
 
@@ -706,7 +713,7 @@ public class LeetCode {
     }
 
     private void collectPermutations(int[] nums, int start, List<Integer> permutation,
-                                     List<List<Integer>>  permutations) {
+                                     List<List<Integer>> permutations) {
 
         if (permutation.size() == nums.length) {
             permutations.add(permutation);
@@ -723,42 +730,42 @@ public class LeetCode {
     //Given an array of strings strs, group the anagrams together. You can return the answer in any order.
     //An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
     public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> result =new ArrayList<>();
-        HashMap<String,List<String>> map=new HashMap<>();
+        List<List<String>> result = new ArrayList<>();
+        HashMap<String, List<String>> map = new HashMap<>();
 
-        for(int i=0;i<strs.length;i++){
-            String s=sortStr(strs[i]);// sort the string |  every anagram will return same string
-            if(!map.containsKey(s)){
-                map.put(s,new ArrayList<String>()); // psuh that sorted string as key
+        for (int i = 0; i < strs.length; i++) {
+            String s = sortStr(strs[i]);// sort the string |  every anagram will return same string
+            if (!map.containsKey(s)) {
+                map.put(s, new ArrayList<String>()); // psuh that sorted string as key
             }
             map.get(s).add(strs[i]);// add in the list
         }
-        for(List<String> list : map.values()){
+        for (List<String> list : map.values()) {
             result.add(list);
         }
         return result;
     }
-    public String sortStr(String s){
-        char c[]=s.toCharArray();
+
+    public String sortStr(String s) {
+        char c[] = s.toCharArray();
         Arrays.sort(c);
-        String s1=new String(c);
+        String s1 = new String(c);
         return s1;
     }
 
     //Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
     public double myPow(double x, int n) {
         double res = 1.0;
-        while(n!=0){
-            if(Math.abs(n)%2 == 0){
-                x*=x;
-                n/=2;
+        while (n != 0) {
+            if (Math.abs(n) % 2 == 0) {
+                x *= x;
+                n /= 2;
             }
-            if(n>0){
+            if (n > 0) {
                 res *= x;
                 n--;
-            }
-            else{
-                res*=(1/x);
+            } else {
+                res *= (1 / x);
                 n++;
             }
         }
@@ -766,25 +773,25 @@ public class LeetCode {
     }
 
 
-//    You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+    //    You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
 //    Return true if you can reach the last index, or false otherwise.
     public boolean canJump(int[] nums) {
-        if(nums.length < 2) return true;
+        if (nums.length < 2) return true;
 
-        for(int curr = nums.length-2; curr>=0;curr--){
-            if(nums[curr] == 0){
+        for (int curr = nums.length - 2; curr >= 0; curr--) {
+            if (nums[curr] == 0) {
                 int neededJumps = 1;
-                while(neededJumps > nums[curr]){
+                while (neededJumps > nums[curr]) {
                     neededJumps++;
                     curr--;
-                    if(curr < 0) return false;
+                    if (curr < 0) return false;
                 }
             }
         }
         return true;
     }
 
-//    Given a string s consisting of some words separated by some number of spaces, return the length of the last word in the string.
+    //    Given a string s consisting of some words separated by some number of spaces, return the length of the last word in the string.
 //    A word is a maximal substring consisting of non-space characters only.
     public int lengthOfLastWord(String s) {
         int length = 0;
@@ -801,7 +808,7 @@ public class LeetCode {
         return length;
     }
 
-//    You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n,
+    //    You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n,
 //   representing the number of elements in nums1 and nums2 respectively.
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int tail1 = m - 1, tail2 = n - 1, finished = m + n - 1;
@@ -816,27 +823,25 @@ public class LeetCode {
     }
 
 
-//    The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
+    //    The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
 //     countAndSay(1) = "1"
 //countAndSay(n) is the way you would "say" the digit string from countAndSay(n-1), which is then converted into a different digit string.
     public String countAndSay(int n) {
         String s = "1";
-        for(int i = 1; i < n; i++){
+        for (int i = 1; i < n; i++) {
             s = countIdx(s);
         }
         return s;
     }
 
-    public String countIdx(String s){
+    public String countIdx(String s) {
         StringBuilder sb = new StringBuilder();
         char c = s.charAt(0);
         int count = 1;
-        for(int i = 1; i < s.length(); i++){
-            if(s.charAt(i) == c){
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == c) {
                 count++;
-            }
-            else
-            {
+            } else {
                 sb.append(count);
                 sb.append(c);
                 c = s.charAt(i);
@@ -848,33 +853,33 @@ public class LeetCode {
         return sb.toString();
     }
 
-//    Given a string path, which is an absolute path (starting with a slash '/') to a file or directory in a Unix-style file system, convert it to the simplified canonical path.
-public String simplifyPath(String path) {
-    Deque<String> stack = new LinkedList<>();
-    Set<String> skip = new HashSet<>(Arrays.asList("..",".",""));
-    for (String dir : path.split("/")) {
-        if (dir.equals("..") && !stack.isEmpty()) stack.pop();
-        else if (!skip.contains(dir)) stack.push(dir);
+    //    Given a string path, which is an absolute path (starting with a slash '/') to a file or directory in a Unix-style file system, convert it to the simplified canonical path.
+    public String simplifyPath(String path) {
+        Deque<String> stack = new LinkedList<>();
+        Set<String> skip = new HashSet<>(Arrays.asList("..", ".", ""));
+        for (String dir : path.split("/")) {
+            if (dir.equals("..") && !stack.isEmpty()) stack.pop();
+            else if (!skip.contains(dir)) stack.push(dir);
+        }
+        String res = "";
+        for (String dir : stack) res = "/" + dir + res;
+        return res.isEmpty() ? "/" : res;
     }
-    String res = "";
-    for (String dir : stack) res = "/" + dir + res;
-    return res.isEmpty() ? "/" : res;
-}
-//    Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
-    public int singleNumber(int[] nums) {
-        HashMap<Integer, Integer> hash = new<Integer, Integer> HashMap();
 
-        for(int x : nums){
-            if(hash.containsKey(x)){       //if hashmap contains 'element', then increase correspoding val
+    //    Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+    public int singleNumber(int[] nums) {
+        HashMap<Integer, Integer> hash = new <Integer, Integer>HashMap();
+
+        for (int x : nums) {
+            if (hash.containsKey(x)) {       //if hashmap contains 'element', then increase correspoding val
                 int count = hash.get(x);
                 hash.put(x, ++count);
-            }
-            else
+            } else
                 hash.put(x, 1);           //if hashmap does not contain  'element', then put it in hashmap
         }
 
-        for(int x : hash.keySet()){       //Iterate through 'keys' of HashMap
-            if(hash.get(x)==1)            //if 'value' for 'key' is '1', then return that 'key' element
+        for (int x : hash.keySet()) {       //Iterate through 'keys' of HashMap
+            if (hash.get(x) == 1)            //if 'value' for 'key' is '1', then return that 'key' element
                 return x;
         }
 
@@ -882,7 +887,7 @@ public String simplifyPath(String path) {
     }
 
 
-//    The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+    //    The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
     public String convert(String s, int nRows) {
         char[] c = s.toCharArray();
         int len = c.length;
@@ -893,7 +898,7 @@ public String simplifyPath(String path) {
         while (i < len) {
             for (int idx = 0; idx < nRows && i < len; idx++) // vertically down
                 sb[idx].append(c[i++]);
-            for (int idx = nRows-2; idx >= 1 && i < len; idx--) // obliquely up
+            for (int idx = nRows - 2; idx >= 1 && i < len; idx--) // obliquely up
                 sb[idx].append(c[i++]);
         }
         for (int idx = 1; idx < sb.length; idx++)
@@ -901,44 +906,77 @@ public String simplifyPath(String path) {
         return sb[0].toString();
     }
 
-//    Given an array of non-negative integers nums, you are initially positioned at the first index of the array.
-public int jump(int[] N) {
-    int len = N.length - 1, curr = -1, next = 0, ans = 0;
-    for (int i = 0; next < len; i++) {
-        if (i > curr) {
-            ans++;
-            curr = next;
+    //    Given an array of non-negative integers nums, you are initially positioned at the first index of the array.
+    public int jump(int[] N) {
+        int len = N.length - 1, curr = -1, next = 0, ans = 0;
+        for (int i = 0; next < len; i++) {
+            if (i > curr) {
+                ans++;
+                curr = next;
+            }
+            next = Math.max(next, N[i] + i);
         }
-        next = Math.max(next, N[i] + i);
+        return ans;
     }
-    return ans;
-}
 
-//Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.
-public static int[][] generateMatrix(int n) {
-    int[][] ret = new int[n][n];
-    int left = 0,top = 0;
-    int right = n -1,down = n - 1;
-    int count = 1;
-    while (left <= right) {
-        for (int j = left; j <= right; j ++) {
-            ret[top][j] = count++;
+    //Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.
+    public static int[][] generateMatrix(int n) {
+        int[][] ret = new int[n][n];
+        int left = 0, top = 0;
+        int right = n - 1, down = n - 1;
+        int count = 1;
+        while (left <= right) {
+            for (int j = left; j <= right; j++) {
+                ret[top][j] = count++;
+            }
+            top++;
+            for (int i = top; i <= down; i++) {
+                ret[i][right] = count++;
+            }
+            right--;
+            for (int j = right; j >= left; j--) {
+                ret[down][j] = count++;
+            }
+            down--;
+            for (int i = down; i >= top; i--) {
+                ret[i][left] = count++;
+            }
+            left++;
         }
-        top ++;
-        for (int i = top; i <= down; i ++) {
-            ret[i][right] = count ++;
-        }
-        right --;
-        for (int j = right; j >= left; j --) {
-            ret[down][j] = count ++;
-        }
-        down --;
-        for (int i = down; i >= top; i --) {
-            ret[i][left] = count ++;
-        }
-        left ++;
+        return ret;
     }
-    return ret;
-}
+
+    String[][] frameGenerator(int n) {
+        int _i = n;
+        int _j = n;
+
+        String[][] array = new String[_i][_j];
+        for (int i = 0; i < _i; i++) {
+            for (int j = 0; j < _j; j++) {
+                if (i == 0 || j == 0 || i == _i - 1 || j == _j - 1) {
+                    array[i][j] = "*";
+                }
+            }
+        }
+        return array;
+    }
+
+//Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> set = new HashSet<>();
+        for(String str:wordDict) set.add(str);
+
+        boolean dp[]= new boolean[s.length()+1];
+        dp[0]=true;
+        for (int i = 1; i <=s.length(); i++) {
+            for (int j = i-1; j>=0; j--) {
+                if (set.contains(s.substring(j, i))&&dp[j]) {
+                    dp[i]=true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
+    }
 }
 
