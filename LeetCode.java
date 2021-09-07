@@ -1082,5 +1082,37 @@ public class LeetCode {
         return result;
     }
 
+
+//    Given a string s containing only digits, return all possible valid IP addresses that can be obtained from s. You can return them in any order.
+//    A valid IP address consists of exactly four integers, each integer is between 0 and 255, separated by single dots and cannot have leading zeros. For example, "0.1.2.201" and "192.168.1.1" are valid IP addresses and "0.011.255.245", "192.168.1.312" and "192.168@1.1" are invalid IP addresses.
+
+
+    public List<String> restoreIpAddresses(String s) {
+        List<String> ret = new LinkedList<>();
+        int[] path = new int[4];
+        helper(ret, s, 0,  path, 0);
+        return ret;
+    }
+
+    void helper(List<String> acc, String s, int idx, int[] path,  int segment){
+        if(segment == 4 && idx == s.length() ){
+            acc.add(path[0] + "." + path[1] + "."+ path[2] + "." + path[3]);
+            return ;
+        }else if(segment == 4 || idx == s.length() ){
+            return ;
+        }
+
+        for(int len = 1; len <= 3 && idx + len <= s.length() ; len ++){
+            int val = Integer.parseInt(s.substring(idx, idx + len));
+            // range check, no leading 0.
+            if(val > 255 || len >= 2  && s.charAt(idx) == '0')
+                break;
+
+            path[segment] = val;
+            helper(acc, s, idx + len, path, segment + 1);
+            path[segment] = -1; // for debug.
+        }
+    }
+
 }
 
