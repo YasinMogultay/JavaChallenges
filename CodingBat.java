@@ -181,20 +181,78 @@ public class CodingBat {
         return result;
     }
 
-//Given three int values, a b c, return the largest.
+    //Given three int values, a b c, return the largest.
     public int intMax(int a, int b, int c) {
-        int large = Math.max(a,b);
-        return Math.max(large,c);
+        int large = Math.max(a, b);
+        return Math.max(large, c);
     }
 
-//Given 2 int values, return whichever value is nearest to the value 10, or return 0 in the event of a tie.
-public int close10(int a, int b) {
-    if (Math.abs(10-a) > Math.abs(10-b))
-        return b;
-    else if(Math.abs(10-a) < Math.abs(10-b))
-        return a;
-    else
+    //Given 2 int values, return whichever value is nearest to the value 10, or return 0 in the event of a tie.
+    public int close10(int a, int b) {
+        if (Math.abs(10 - a) > Math.abs(10 - b))
+            return b;
+        else if (Math.abs(10 - a) < Math.abs(10 - b))
+            return a;
+        else
+            return 0;
+    }
+
+    //Given 2 int values, return true if they are both in the range 30..40 inclusive, or they are both in the range 40..50 inclusive.
+    public boolean in3050(int a, int b) {
+        if ((a <= 40 && a >= 30) && (b <= 40 && b >= 30))
+            return true;
+        else if ((a <= 50 && a >= 40) && (b <= 50 && b >= 40))
+            return true;
+        return false;
+    }
+
+    //    Given 2 positive int values, return the larger value that is in the range 10..20 inclusive, or return 0 if neither is in that range.
+    public int max1020(int a, int b) {
+        // First make it so the bigger value is in a
+        if (b > a) {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        // Knowing a is bigger, just check a first
+        if (a >= 10 && a <= 20) return a;
+        if (b >= 10 && b <= 20) return b;
         return 0;
-}
+    }
+
+    //Return true if the given string contains between 1 and 3 'e' chars.
+    public boolean stringE(String str) {
+        char[] ch = str.toCharArray();
+        int count = 0;
+        for (char i : ch){
+            if (i == 'e')
+                count++;
+        }
+
+        if (count < 4 && count > 0)
+            return true;
+        else return false;
+    }
+
+//Given two non-negative int values, return true if they have the same last digit, such as with 27 and 57.
+    public boolean lastDigit(int a, int b) {
+        if(a % 10 == b % 10)
+            return true;
+        return false;
+    }
+
+    public String endUp(String str) {
+        if (str.length() < 3)
+            return str.toUpperCase();
+
+        int toCut = str.length() - 3;
+        String front = str.substring(0,toCut);
+        String back = str.substring(toCut);
+
+        return front + back.toUpperCase();
+    }
+
+
 
 }
