@@ -181,5 +181,20 @@ public class CodingBat {
         return result;
     }
 
+//Given three int values, a b c, return the largest.
+    public int intMax(int a, int b, int c) {
+        int large = Math.max(a,b);
+        return Math.max(large,c);
+    }
+
+//Given 2 int values, return whichever value is nearest to the value 10, or return 0 in the event of a tie.
+public int close10(int a, int b) {
+    if (Math.abs(10-a) > Math.abs(10-b))
+        return b;
+    else if(Math.abs(10-a) < Math.abs(10-b))
+        return a;
+    else
+        return 0;
+}
 
 }
