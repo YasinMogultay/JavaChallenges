@@ -349,4 +349,28 @@ public String frontTimes(String str, int n) {
 
         return count;
     }
+
+//    Given an array of ints, return the number of 9's in the array.
+    public int arrayCount9(int[] nums) {
+        int count = 0;
+        for (int i=0; i<nums.length; i++) {
+            if (nums[i] == 9) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+//    Given an array of ints, return true if one of the first 4 elements in the array is a 9. The array length may be less than 4.
+    public boolean arrayFront9(int[] nums) {
+        // First figure the end for the loop
+        int end = nums.length;
+        if (end > 4) end = 4;
+
+        for (int i=0; i<end; i++) {
+            if (nums[i] == 9) return true;
+        }
+
+        return false;
+    }
 }
