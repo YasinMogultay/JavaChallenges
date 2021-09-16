@@ -429,4 +429,36 @@ public String frontTimes(String str, int n) {
         return result;
     }
 
+
+    // Suppose the string "yak" is unlucky. Given a string, return a version where all the "yak" are removed, but the "a" can be any char. The "yak" strings will not overlap.
+
+    public String stringYak(String str) {
+        String result = "";
+
+        for (int i=0; i<str.length(); i++) {
+            // Look for i starting a "yak" -- advance i in that case
+            if (i+2<str.length() && str.charAt(i)=='y' && str.charAt(i+2)=='k') {
+                i =  i + 2;
+            } else { // Otherwise do the normal append
+                result = result + str.charAt(i);
+            }
+        }
+
+        return result;
+    }
+
+    // Given an array of ints, return the number of times that two 6's are next to each other in the array. Also count instances where the second "6" is actually a 7.
+
+    public int array667(int[] nums) {
+        int count = 0;
+        // Note: iterate to length-1, so can use i+1 in the loop
+        for (int i=0; i < (nums.length-1); i++) {
+            if (nums[i] == 6) {
+                if (nums[i+1] == 6 || nums[i+1] == 7) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
 }
