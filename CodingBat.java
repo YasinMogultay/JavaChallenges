@@ -399,4 +399,34 @@ public String frontTimes(String str, int n) {
 
         return count;
     }
+
+    // Given a string, return a version where all the "x" have been removed. Except an "x" at the very start or end should not be removed.
+    public String stringX(String str) {
+        String result = "";
+        for (int i=0; i<str.length(); i++) {
+            // Only append the char if it is not the "x" case
+            if (!(i > 0 && i < (str.length()-1) && str.substring(i, i+1).equals("x"))) {
+                result = result + str.substring(i, i+1); // Could use str.charAt(i) here
+            }
+        }
+        return result;
+    }
+
+    // Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ... so "kittens" yields "kien".
+    public String altPairs(String str) {
+        String result = "";
+
+        // Run i by 4 to hit 0, 4, 8, ...
+        for (int i=0; i<str.length(); i += 4) {
+            // Append the chars between i and i+2
+            int end = i + 2;
+            if (end > str.length()) {
+                end = str.length();
+            }
+            result = result + str.substring(i, end);
+        }
+
+        return result;
+    }
+
 }
