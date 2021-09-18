@@ -225,7 +225,7 @@ public class CodingBat {
     public boolean stringE(String str) {
         char[] ch = str.toCharArray();
         int count = 0;
-        for (char i : ch){
+        for (char i : ch) {
             if (i == 'e')
                 count++;
         }
@@ -235,9 +235,9 @@ public class CodingBat {
         else return false;
     }
 
-//Given two non-negative int values, return true if they have the same last digit, such as with 27 and 57.
+    //Given two non-negative int values, return true if they have the same last digit, such as with 27 and 57.
     public boolean lastDigit(int a, int b) {
-        if(a % 10 == b % 10)
+        if (a % 10 == b % 10)
             return true;
         return false;
     }
@@ -247,7 +247,7 @@ public class CodingBat {
             return str.toUpperCase();
 
         int toCut = str.length() - 3;
-        String front = str.substring(0,toCut);
+        String front = str.substring(0, toCut);
         String back = str.substring(toCut);
 
         return front + back.toUpperCase();
@@ -255,53 +255,53 @@ public class CodingBat {
 
     public String everyNth(String str, int n) {
         String result = "";
-        for (int i = 0; i < str.length(); i+=n){
+        for (int i = 0; i < str.length(); i += n) {
             result = result + str.charAt(i);
         }
         return result;
     }
 
-//    Given a string and a non-negative int n, return a larger string that is n copies of the original string.
+    //    Given a string and a non-negative int n, return a larger string that is n copies of the original string.
     public String stringTimes(String str, int n) {
         String result = "";
-        for (int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             result = result + str;  // could use += here
         }
         return result;
     }
 
-//Given a string and a non-negative int n, we'll say that the front of the string is the first 3 chars, or whatever is there if the string is less than length 3. Return n copies of the front;
-public String frontTimes(String str, int n) {
-    int frontLen = 3;
-    if (frontLen > str.length()) {
-        frontLen = str.length();
-    }
-    String front = str.substring(0, frontLen);
+    //Given a string and a non-negative int n, we'll say that the front of the string is the first 3 chars, or whatever is there if the string is less than length 3. Return n copies of the front;
+    public String frontTimes(String str, int n) {
+        int frontLen = 3;
+        if (frontLen > str.length()) {
+            frontLen = str.length();
+        }
+        String front = str.substring(0, frontLen);
 
-    String result = "";
-    for (int i=0; i<n; i++) {
-        result = result + front;
+        String result = "";
+        for (int i = 0; i < n; i++) {
+            result = result + front;
+        }
+        return result;
     }
-    return result;
-}
 
-//    Count the number of "xx" in the given string. We'll say that overlapping is allowed, so "xxx" contains 2 "xx".
+    //    Count the number of "xx" in the given string. We'll say that overlapping is allowed, so "xxx" contains 2 "xx".
     int countXX(String str) {
         int count = 0;
-        for (int i = 0; i < str.length()-1; i++) {
-            if (str.substring(i, i+2).equals("xx")) count++;
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.substring(i, i + 2).equals("xx")) count++;
         }
         return count;
     }
 
-//    Given a string, return true if the first instance of "x" in the string is immediately followed by another "x".
+    //    Given a string, return true if the first instance of "x" in the string is immediately followed by another "x".
     boolean doubleX(String str) {
         int i = str.indexOf("x");
         if (i == -1) return false; // no "x" at all
 
         // Is char at i+1 also an "x"?
-        if (i+1 >= str.length()) return false; // check i+1 in bounds?
-        return str.substring(i+1, i+2).equals("x");
+        if (i + 1 >= str.length()) return false; // check i+1 in bounds?
+        return str.substring(i + 1, i + 2).equals("x");
 
         // Another approach -- .startsWith() simplifies the logic
         // String x = str.substring(i);
@@ -309,39 +309,39 @@ public String frontTimes(String str, int n) {
     }
 
 
-//    Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo".
+    //    Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo".
     public String stringBits(String str) {
         String result = "";
         // Note: the loop increments i by 2
-        for (int i=0; i<str.length(); i+=2) {
-            result = result + str.substring(i, i+1);
+        for (int i = 0; i < str.length(); i += 2) {
+            result = result + str.substring(i, i + 1);
             // Alternately could use str.charAt(i)
         }
         return result;
     }
 
-//    Given a non-empty string like "Code" return a string like "CCoCodCode".
+    //    Given a non-empty string like "Code" return a string like "CCoCodCode".
     public String stringSplosion(String str) {
         String result = "";
         // On each iteration, add the substring of the chars 0..i
-        for (int i=0; i<str.length(); i++) {
-            result = result + str.substring(0, i+1);
+        for (int i = 0; i < str.length(); i++) {
+            result = result + str.substring(0, i + 1);
         }
         return result;
     }
 
-//    Given a string, return the count of the number of times that a substring length 2 appears in the string and also as the last 2 chars of the string, so "hixxxhi" yields 1 (we won't count the end substring).
+    //    Given a string, return the count of the number of times that a substring length 2 appears in the string and also as the last 2 chars of the string, so "hixxxhi" yields 1 (we won't count the end substring).
     public int last2(String str) {
         // Screen out too-short string case.
         if (str.length() < 2) return 0;
 
-        String end = str.substring(str.length()-2);
+        String end = str.substring(str.length() - 2);
         // Note: substring() with 1 value goes through the end of the string
         int count = 0;
 
         // Check each substring length 2 starting at i
-        for (int i=0; i<str.length()-2; i++) {
-            String sub = str.substring(i, i+2);
+        for (int i = 0; i < str.length() - 2; i++) {
+            String sub = str.substring(i, i + 2);
             if (sub.equals(end)) {  // Use .equals() with strings
                 count++;
             }
@@ -350,10 +350,10 @@ public String frontTimes(String str, int n) {
         return count;
     }
 
-//    Given an array of ints, return the number of 9's in the array.
+    //    Given an array of ints, return the number of 9's in the array.
     public int arrayCount9(int[] nums) {
         int count = 0;
-        for (int i=0; i<nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 9) {
                 count++;
             }
@@ -361,13 +361,13 @@ public String frontTimes(String str, int n) {
         return count;
     }
 
-//    Given an array of ints, return true if one of the first 4 elements in the array is a 9. The array length may be less than 4.
+    //    Given an array of ints, return true if one of the first 4 elements in the array is a 9. The array length may be less than 4.
     public boolean arrayFront9(int[] nums) {
         // First figure the end for the loop
         int end = nums.length;
         if (end > 4) end = 4;
 
-        for (int i=0; i<end; i++) {
+        for (int i = 0; i < end; i++) {
             if (nums[i] == 9) return true;
         }
 
@@ -377,8 +377,8 @@ public String frontTimes(String str, int n) {
     // Given an array of ints, return true if the sequence of numbers 1, 2, 3 appears in the array somewhere.
     public boolean array123(int[] nums) {
         // Note: iterate < length-2, so can use i+1 and i+2 in the loop
-        for (int i=0; i < (nums.length-2); i++) {
-            if (nums[i]==1 && nums[i+1]==2 && nums[i+2]==3) return true;
+        for (int i = 0; i < (nums.length - 2); i++) {
+            if (nums[i] == 1 && nums[i + 1] == 2 && nums[i + 2] == 3) return true;
         }
         return false;
     }
@@ -389,9 +389,9 @@ public String frontTimes(String str, int n) {
         int len = Math.min(a.length(), b.length());
         int count = 0;
 
-        for (int i=0; i<len-1; i++) {
-            String aSub = a.substring(i, i+2);
-            String bSub = b.substring(i, i+2);
+        for (int i = 0; i < len - 1; i++) {
+            String aSub = a.substring(i, i + 2);
+            String bSub = b.substring(i, i + 2);
             if (aSub.equals(bSub)) {  // Use .equals() with strings
                 count++;
             }
@@ -403,10 +403,10 @@ public String frontTimes(String str, int n) {
     // Given a string, return a version where all the "x" have been removed. Except an "x" at the very start or end should not be removed.
     public String stringX(String str) {
         String result = "";
-        for (int i=0; i<str.length(); i++) {
+        for (int i = 0; i < str.length(); i++) {
             // Only append the char if it is not the "x" case
-            if (!(i > 0 && i < (str.length()-1) && str.substring(i, i+1).equals("x"))) {
-                result = result + str.substring(i, i+1); // Could use str.charAt(i) here
+            if (!(i > 0 && i < (str.length() - 1) && str.substring(i, i + 1).equals("x"))) {
+                result = result + str.substring(i, i + 1); // Could use str.charAt(i) here
             }
         }
         return result;
@@ -417,7 +417,7 @@ public String frontTimes(String str, int n) {
         String result = "";
 
         // Run i by 4 to hit 0, 4, 8, ...
-        for (int i=0; i<str.length(); i += 4) {
+        for (int i = 0; i < str.length(); i += 4) {
             // Append the chars between i and i+2
             int end = i + 2;
             if (end > str.length()) {
@@ -435,10 +435,10 @@ public String frontTimes(String str, int n) {
     public String stringYak(String str) {
         String result = "";
 
-        for (int i=0; i<str.length(); i++) {
+        for (int i = 0; i < str.length(); i++) {
             // Look for i starting a "yak" -- advance i in that case
-            if (i+2<str.length() && str.charAt(i)=='y' && str.charAt(i+2)=='k') {
-                i =  i + 2;
+            if (i + 2 < str.length() && str.charAt(i) == 'y' && str.charAt(i + 2) == 'k') {
+                i = i + 2;
             } else { // Otherwise do the normal append
                 result = result + str.charAt(i);
             }
@@ -452,9 +452,9 @@ public String frontTimes(String str, int n) {
     public int array667(int[] nums) {
         int count = 0;
         // Note: iterate to length-1, so can use i+1 in the loop
-        for (int i=0; i < (nums.length-1); i++) {
+        for (int i = 0; i < (nums.length - 1); i++) {
             if (nums[i] == 6) {
-                if (nums[i+1] == 6 || nums[i+1] == 7) {
+                if (nums[i + 1] == 6 || nums[i + 1] == 7) {
                     count++;
                 }
             }
@@ -462,13 +462,13 @@ public String frontTimes(String str, int n) {
         return count;
     }
 
-//    Given an array of ints, we'll say that a triple is a value appearing 3 times in a row in the array. Return true if the array does not contain any triples.
+    //    Given an array of ints, we'll say that a triple is a value appearing 3 times in a row in the array. Return true if the array does not contain any triples.
     public boolean noTriples(int[] nums) {
         // Iterate < length-2, so can use i+1 and i+2 in the loop.
         // Return false immediately if every seeing a triple.
-        for (int i=0; i < (nums.length-2); i++) {
+        for (int i = 0; i < (nums.length - 2); i++) {
             int first = nums[i];
-            if (nums[i+1]==first && nums[i+2]==first) return false;
+            if (nums[i + 1] == first && nums[i + 2] == first) return false;
         }
 
         // If we get here ... no triples.
@@ -476,14 +476,14 @@ public String frontTimes(String str, int n) {
     }
 
 
-//    Given an array of ints, return true if it contains a 2, 7, 1 pattern: a value, followed by the value plus 5, followed by the value minus 1. Additionally the 271 counts even if the "1" differs by 2 or less from the correct value.
+    //    Given an array of ints, return true if it contains a 2, 7, 1 pattern: a value, followed by the value plus 5, followed by the value minus 1. Additionally the 271 counts even if the "1" differs by 2 or less from the correct value.
     public boolean has271(int[] nums) {
         // Iterate < length-2, so can use i+1 and i+2 in the loop.
         // Return true immediately when seeing 271.
-        for (int i=0; i < (nums.length-2); i++) {
+        for (int i = 0; i < (nums.length - 2); i++) {
             int val = nums[i];
-            if (nums[i+1] == (val+5) &&              // the "7" check
-                    Math.abs(nums[i+2] - (val-1)) <= 2) {  // the "1" check
+            if (nums[i + 1] == (val + 5) &&              // the "7" check
+                    Math.abs(nums[i + 2] - (val - 1)) <= 2) {  // the "1" check
                 return true;
             }
         }
@@ -491,4 +491,21 @@ public String frontTimes(String str, int n) {
         // If we get here ... none found.
         return false;
     }
+
+//    Given an array of ints, return true if 6 appears as either the first or last element in the array. The array will be length 1 or more.
+    public boolean firstLast6(int[] nums) {
+        if (nums[0] == 6 || nums[nums.length - 1] == 6)
+            return true;
+        return false;
+    }
+
+//    Given an array of ints, return true if the array is length 1 or more, and the first element and the last element are equal.
+    public boolean sameFirstLast(int[] nums) {
+        if(nums.length == 1)
+            return true;
+        if (nums.length > 1 && nums[0] == nums[nums.length-1])
+            return true;
+        return false;
+    }
+
 }
