@@ -518,4 +518,19 @@ public boolean commonEnd(int[] a, int[] b) {
     public int sum3(int[] nums) {
         return nums[0] + nums[1] + nums[2];
     }
+//Given an array of ints length 3, return an array with the elements "rotated left" so {1, 2, 3} yields {2, 3, 1}.
+    public int[] rotateLeft3(int[] nums) {
+
+        return new int[] {nums[1],nums[2],nums[0]};
+    }
+
+//    Given an array of ints length 3, return a new array with the elements in reverse order, so {1, 2, 3} becomes {3, 2, 1}.
+    public int[] reverse3(int[] nums) {
+        int[] myArray = new int[3];
+
+        myArray[0] = nums[2];
+        myArray[1] = nums[1];
+        myArray[2] = nums[0];
+        return myArray;
+    }
 }
