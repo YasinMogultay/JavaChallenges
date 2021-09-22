@@ -593,4 +593,35 @@ public boolean commonEnd(int[] a, int[] b) {
         return num;
     }
 
+//    Given an int array, return true if the array contains 2 twice, or 3 twice. The array will be length 0, 1, or 2.
+    public boolean double23(int[] nums) {
+        if (nums.length < 2)
+            return false;
+        if ((nums[0] == 2 && nums[1] == 2) || (nums[0] == 3 && nums[1] == 3))
+            return true;
+        else
+            return false;
+    }
+
+//    Given an int array length 3, if there is a 2 in the array immediately followed by a 3, set the 3 element to 0. Return the changed array.
+    public int[] fix23(int[] nums) {
+        if (nums[0] == 2 && nums[1] == 3)
+            nums[1] = 0;
+        if (nums[1] == 2 && nums[2] == 3)
+            nums[2] = 0;
+        return new int[] {nums[0],nums[1],nums[2]};
+    }
+
+//    Start with 2 int arrays, a and b, of any length. Return how many of the arrays have 1 as their first element.
+    public int start1(int[] a, int[] b) {
+        int count = 0;
+        if (a.length != 0) {
+            if (a[0]== 1) count++; }
+        if (b.length != 0) {
+            if (b[0]== 1) count++; }
+
+        return count;
+    }
+
+
 }
