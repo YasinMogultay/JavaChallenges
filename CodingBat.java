@@ -558,4 +558,17 @@ public boolean commonEnd(int[] a, int[] b) {
         else
             return nums[0] + nums[1];
     }
+
+//    Given 2 int arrays, a and b, each length 3, return a new array length 2 containing their middle elements.
+    public int[] middleWay(int[] a, int[] b) {
+        int[] myArray = new int[] {a[1], b[1]};
+        return myArray;
+    }
+
+    // Given an array of ints, return a new array length 2 containing the first and last elements from the original array. The original array will be length 1 or more.
+    public int[] makeEnds(int[] nums) {
+        return new int[] {nums[0],nums[nums.length-1]};
+    }
+
+
 }
