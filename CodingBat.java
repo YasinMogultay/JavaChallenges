@@ -533,4 +533,29 @@ public boolean commonEnd(int[] a, int[] b) {
         myArray[2] = nums[0];
         return myArray;
     }
+
+//    Given an array of ints length 3, figure out which is larger, the first or last element in the array, and set all the other elements to be that value. Return the changed array.
+    public int[] maxEnd3(int[] nums) {
+        if (nums[0] >= nums[nums.length-1]) {
+            nums[0] = nums[0];
+            nums[1] = nums[0];
+            nums[2] = nums[0];
+        }
+        else if (nums[0] <= nums[nums.length-1]) {
+            nums[0] = nums[nums.length-1];
+            nums[1] = nums[nums.length-1];
+            nums[2] = nums[nums.length-1];
+        }
+        return new int[] { nums[0],nums[1],nums[2]};
+    }
+
+//    Given an array of ints, return the sum of the first 2 elements in the array. If the array length is less than 2, just sum up the elements that exist, returning 0 if the array is length 0.
+    public int sum2(int[] nums) {
+        if (nums.length == 1)
+            return nums[0];
+        else if (nums.length == 0)
+            return 0;
+        else
+            return nums[0] + nums[1];
+    }
 }
