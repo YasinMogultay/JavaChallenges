@@ -570,5 +570,27 @@ public boolean commonEnd(int[] a, int[] b) {
         return new int[] {nums[0],nums[nums.length-1]};
     }
 
+//    Given an int array length 2, return true if it contains a 2 or a 3.
+    public boolean has23(int[] nums) {
+        if (nums[0] == 2 || nums[0] == 3 || nums[1] == 2 || nums[1] == 3)
+            return true;
+        else
+            return false;
+    }
+
+//    Given an int array length 2, return true if it does not contain a 2 or 3.
+    public boolean no23(int[] nums) {
+        if (nums[0] != 2 && nums[0] != 3 && nums[1] != 2 && nums[1] != 3)
+            return true;
+        else
+            return false;
+    }
+
+//Given an int array, return a new array with double the length where its last element is the same as the original array, and all the other elements are 0. The original array will be length 1 or more.
+    public int[] makeLast(int[] nums) {
+        int[] num = new int[nums.length*2];
+        num[nums.length*2 - 1] = nums[nums.length -1];
+        return num;
+    }
 
 }
