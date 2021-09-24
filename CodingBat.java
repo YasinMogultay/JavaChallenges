@@ -623,5 +623,20 @@ public boolean commonEnd(int[] a, int[] b) {
         return count;
     }
 
+//    Start with 2 int arrays, a and b, each length 2. Consider the sum of the values in each array. Return the array which has the largest sum. In event of a tie, return a.
+    public int[] biggerTwo(int[] a, int[] b) {
+        if (b[1] + b[0] > a[1] + a[0])
+            return b;
+        else
+            return a;
+    }
+
+//    Given an array of ints of even length, return a new array length 2 containing the middle two elements from the original array. The original array will be length 2 or more.
+    public int[] makeMiddle(int[] nums) {
+        return new int[]{
+                nums[nums.length/2 -1], nums[nums.length/2]};
+    }
+
+
 
 }
