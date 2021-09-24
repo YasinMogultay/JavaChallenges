@@ -637,6 +637,23 @@ public boolean commonEnd(int[] a, int[] b) {
                 nums[nums.length/2 -1], nums[nums.length/2]};
     }
 
+//    Given 2 int arrays, each length 2, return a new array length 4 containing all their elements.
+    public int[] plusTwo(int[] a, int[] b) {
+        int[] myArray = new int[4];
+        myArray[0] = a[0];
+        myArray[1] = a[1];
+        myArray[2] = b[0];
+        myArray[3] = b[1];
 
+        return myArray;
+    }
 
+//    Given an array of ints, swap the first and last elements in the array. Return the modified array. The array length will be at least 1.
+    public int[] swapEnds(int[] nums) {
+        int a = nums[0];
+        int b = nums[nums.length - 1];
+        nums[0] = b;
+        nums[nums.length - 1] =a;
+        return nums;
+    }
 }
