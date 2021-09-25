@@ -656,4 +656,29 @@ public boolean commonEnd(int[] a, int[] b) {
         nums[nums.length - 1] =a;
         return nums;
     }
+
+//    Given an array of ints of odd length, return a new array length 3 containing the elements from the middle of the array. The array length will be at least 3.
+    public int[] midThree(int[] nums) {
+        return new int[] {
+                nums[(nums.length+1)/2 -2],
+                nums[(nums.length+1)/2 -1],
+                nums[(nums.length+1)/2]};
+    }
+
+//    Given an array of ints of odd length, look at the first, last, and middle values in the array and return the largest. The array length will be a least 1.
+public int maxTriple(int[] nums) {
+    int result = 0;
+    int a = nums[0];
+    int b= nums[((nums.length+1)/2) -1];
+    int c = nums[nums.length -1];
+
+    if (a>b && a>c)
+        result = a;
+    if (b>a && b>c)
+        result = b;
+    if (c>a && c>b)
+        result = c;
+    return result;
+}
+
 }
