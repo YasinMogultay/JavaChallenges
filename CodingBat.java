@@ -756,5 +756,23 @@ public class CodingBat {
 
     }
 
+//    Modify and return the given map as follows: for this problem the map may or may not contain the "a" and "b" keys. If both keys are present, append their 2 string values together and store the result under the key "ab".
+    public Map<String, String> mapAB(Map<String, String> map) {
+        if (map.containsKey("a") && map.containsKey("b")) {
+            String tmp = map.get("a") + map.get("b");
+            map.put("ab", tmp);
+        }
+        return map;
+    }
+
+//    Given a map of food keys and topping values, modify and return the map as follows: if the key "ice cream" is present, set its value to "cherry". In all cases, set the key "bread" to have the value "butter".
+    public Map<String, String> topping1(Map<String, String> map) {
+        if (map.containsKey("ice cream")) {
+            map.put("ice cream", "cherry");
+        }
+        map.put("bread", "butter");
+        return map;
+    }
+
 
 }
