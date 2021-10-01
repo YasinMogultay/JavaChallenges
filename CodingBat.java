@@ -686,7 +686,7 @@ public class CodingBat {
     }
 
 
-//    Given an int array of any length, return a new array of its first 2 elements. If the array is smaller than length 2, use whatever elements are present.
+    //    Given an int array of any length, return a new array of its first 2 elements. If the array is smaller than length 2, use whatever elements are present.
     public int[] frontPiece(int[] nums) {
         if (nums.length == 1)
             return new int[]{nums[0]};
@@ -696,14 +696,14 @@ public class CodingBat {
             return new int[]{nums[0], nums[1]};
     }
 
-//    We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1. Return true if the given array contains an unlucky 1 in the first 2 or last 2 positions in the array.
+    //    We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1. Return true if the given array contains an unlucky 1 in the first 2 or last 2 positions in the array.
     public boolean unlucky1(int[] nums) {
-        if (nums.length ==0 || nums.length ==1)
+        if (nums.length == 0 || nums.length == 1)
             return false;
-        else if ((nums[0] ==1 && nums[1] ==3) ||
-                (nums[1] ==1 && nums[2] ==3) ||
-                (nums[nums.length -1] ==3 &&
-                        nums[nums.length -2] ==1))
+        else if ((nums[0] == 1 && nums[1] == 3) ||
+                (nums[1] == 1 && nums[2] == 3) ||
+                (nums[nums.length - 1] == 3 &&
+                        nums[nums.length - 2] == 1))
             return true;
         else
             return false;
@@ -735,7 +735,7 @@ public class CodingBat {
         }
     }
 
-//    Modify and return the given map as follows: if the key "a" has a value, set the key "b" to have that value, and set the key "a" to have the value "". Basically "b" is a bully, taking the value and replacing it with the empty string.
+    //    Modify and return the given map as follows: if the key "a" has a value, set the key "b" to have that value, and set the key "a" to have the value "". Basically "b" is a bully, taking the value and replacing it with the empty string.
     public Map<String, String> mapBully(Map<String, String> map) {
         if (map.containsKey("a")) {
             map.put("b", map.get("a"));
@@ -744,7 +744,7 @@ public class CodingBat {
         return map;
     }
 
-//    Modify and return the given map as follows: if the key "a" has a value, set the key "b" to have that same value. In all cases remove the key "c", leaving the rest of the map unchanged.
+    //    Modify and return the given map as follows: if the key "a" has a value, set the key "b" to have that same value. In all cases remove the key "c", leaving the rest of the map unchanged.
     public Map<String, String> mapShare(Map<String, String> map) {
 
         map.remove("c");
@@ -756,7 +756,7 @@ public class CodingBat {
 
     }
 
-//    Modify and return the given map as follows: for this problem the map may or may not contain the "a" and "b" keys. If both keys are present, append their 2 string values together and store the result under the key "ab".
+    //    Modify and return the given map as follows: for this problem the map may or may not contain the "a" and "b" keys. If both keys are present, append their 2 string values together and store the result under the key "ab".
     public Map<String, String> mapAB(Map<String, String> map) {
         if (map.containsKey("a") && map.containsKey("b")) {
             String tmp = map.get("a") + map.get("b");
@@ -765,7 +765,7 @@ public class CodingBat {
         return map;
     }
 
-//    Given a map of food keys and topping values, modify and return the map as follows: if the key "ice cream" is present, set its value to "cherry". In all cases, set the key "bread" to have the value "butter".
+    //    Given a map of food keys and topping values, modify and return the map as follows: if the key "ice cream" is present, set its value to "cherry". In all cases, set the key "bread" to have the value "butter".
     public Map<String, String> topping1(Map<String, String> map) {
         if (map.containsKey("ice cream")) {
             map.put("ice cream", "cherry");
@@ -781,12 +781,35 @@ topping2({"spinach": "dirt", "ice cream": "cherry"}) → {"yogurt": "cherry", "s
 topping2({"yogurt": "salt"}) → {"yogurt": "salt"}
 */
     public Map<String, String> topping2(Map<String, String> map) {
-        if(map.containsKey("ice cream")) {
-            map.put("yogurt",map.get("ice cream"));
+        if (map.containsKey("ice cream")) {
+            map.put("yogurt", map.get("ice cream"));
         }
-        if(map.containsKey("spinach")) {
-            map.put("spinach","nuts");
+        if (map.containsKey("spinach")) {
+            map.put("spinach", "nuts");
         }
+        return map;
+    }
+
+    /**
+     * Created by Kaan Karaca on 06/06/2016.
+     * github.com/h4yfans
+     * kaan94karaca@gmail.com
+     * <p>
+     * Given a map of food keys and topping values, modify and return the map as follows: if the key "potato" has a value,
+     * set that as the value for the key "fries". If the key "salad" has a value, set that as the value for the key "spinach".
+     * <p>
+     * topping3({"potato": "ketchup"}) → {"fries": "ketchup", "potato": "ketchup"}
+     * topping3({"potato": "butter"}) → {"fries": "butter", "potato": "butter"}
+     * topping3({"salad": "oil", "potato": "ketchup"}) → {"salad": "oil", "fries": "ketchup", "spinach": "oil", "potato": "ketchup"}
+     */
+    public Map<String, String> topping3(Map<String, String> map) {
+
+        if (map.get("potato") != null)
+            map.put("fries", map.get("potato"));
+
+        if (map.get("salad") != null)
+            map.put("spinach", map.get("salad"));
+
         return map;
     }
 
